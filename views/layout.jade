@@ -4,4 +4,18 @@ html
 		title NodeBlog
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
-		block content
+		.container
+			img.logo(src='/images/nodebloglogo.gif')
+			nav
+				ul
+					li
+						a(href='/') Home
+					li
+						a(href='/posts/add') Add Post
+					li
+						a(href='/categories/add') Add Category
+					!= messages()
+			block content
+			footer
+				p NodeBlog &copy; 2017
+
