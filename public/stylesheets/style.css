@@ -2,6 +2,7 @@ body {
 	font-family: arial;
 	font-size: 15px;
 	background: #fff;
+	overflow-x: hidden;
 	color:#666;
 }
 .logo{
@@ -80,7 +81,7 @@ label{
 	display: inline-block;
 	width: 180px;
 }
-input[type='text'], select, textarea{
+input[type='text'],input[type='email'], select, textarea{
 	padding:3px;
 	height: 20px;
 	width: 200px;
@@ -126,4 +127,19 @@ footer{
 	height: 30px;
 	color:white;
 	background: #444;
+}
+.comment-form{
+	margin: 30px 0;
+}
+.comment{
+	background: #ccc;
+	padding: 5px;
+	border:#666 solid 1px;
+	margin:15px 0 20px;
+}
+.comment-text{
+	word-wrap: break-word;
+}
+.comment-name{
+	font-weight: bold;
 }
