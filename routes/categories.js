@@ -1,6 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
+//categories show
+router.get('/show/:category',function(req, res, next){
+	var db = req.db;
+	var posts = db.get('posts');
+	posts.find({category:req.params.category},{},function(err, posts){
+		res.render('index',{
+			title:req.params.category,
+			posts:posts
+		});
+	});
+
+});
+
 // Adding categories
 router.get('/add', function(req, res, next) {
 	res.render('addcategory', { title: 'Add Category'});

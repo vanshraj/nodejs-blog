@@ -1,7 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+var ObjectId = require('mongodb').ObjectID;
 var upload = multer({ dest: './public/images/uploads' });
+
+router.get('/show/:id',function(req, res, next){
+	var db = req.db;
+	var posts = db.get('posts');
+	posts.findOne({_id:ObjectId(req.params.id)}, function(err, post){
+		res.render('show',{
+			post:post
+		});
+	});
+});
 
 router.get('/add',function(req, res, next){
 	var db = req.db;
@@ -43,7 +54,7 @@ router.post('/add', upload.single('mainimage'), function(req, res, next){
 	var errors = req.validationErrors();
 	if(errors){
 		var categories = db.get('categories');
-		
+
 		categories.find({},{},function( err, categories){
 			res.render('addpost',{
 				errors: errors,
